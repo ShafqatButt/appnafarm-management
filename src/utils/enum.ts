@@ -1,0 +1,6 @@
+enum FINANCE_TYPE {
+    MONTHLY_INCOME= 0,
+    TOTAL_INCOME = 1,
+    INVESTED_CROPS = 2,
+    ANNUAL_RETURN = 3,
+  }
