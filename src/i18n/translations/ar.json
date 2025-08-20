@@ -1,0 +1,13 @@
+{
+  "languageSelectionScreen": {
+    "title": "Let’s get started!",
+    "subTitle": "Please select the language for the app.",
+    "english": "English",
+    "urdu": "Urdu",
+    "arabic": "Arabic",
+    "continue": "Continue"
+  },
+  "loginScreen": {
+    "title": "Welcome to AppnaFarm"
+  }
+}
