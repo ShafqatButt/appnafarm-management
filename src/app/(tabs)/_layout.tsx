@@ -1,60 +1,141 @@
+import { home, machine, people, planning, store } from "@/src/assets/icons";
+import AppIcon from "@/src/components/appIcon";
+import AppText from "@/src/components/appText";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { COLORS } from "@/src/theme/colors";
+import { GST } from "@/src/theme/globalStyles";
+import { RF } from "@/src/theme/responsive";
 import React from "react";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Tabs } from "expo-router";
-import { Pressable } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native";
+import { Source } from "react-native-fast-image";
+import { Tabs } from "expo-router";
 
-import Colors from "@/src/constants/Colors";
-import { useColorScheme } from "@/src/components/useColorScheme";
-import { useClientOnlyValue } from "@/src/components/useClientOnlyValue";
+const Tab = createBottomTabNavigator();
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+const { GREEN_300, GREEN_100 } = COLORS;
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? "light"].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarStyle: styles.tabBarStyle,
+          tabBarShowLabel: false,
+          tabBarHideOnKeyboard: true,
+          headerShown: false,
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: "Tab Two",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            title: "Home",
+            tabBarIcon: (props) => (
+              <TabBarIcon
+                {...props}
+                icon={home}
+                label={"Home"}
+                pdVertical={RF(12)}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="store"
+          options={{
+            title: "Appna Store",
+            tabBarIcon: (props) => (
+              <TabBarIcon
+                {...props}
+                icon={store}
+                label={"Appna Store"}
+                pdVertical={RF(12)}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="agriBook"
+          options={{
+            title: "AgriBook",
+            tabBarIcon: (props) => (
+              <TabBarIcon
+                {...props}
+                icon={machine}
+                label={"AgriBook"}
+                pdVertical={RF(12)}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="planningAndRotation"
+          options={{
+            title: "Planning & Rotation",
+            tabBarIcon: (props) => (
+              <TabBarIcon
+                {...props}
+                icon={planning}
+                label={"Planning & rotation"}
+                pdVertical={RF(4)}
+              />
+            ),
+          }}
+        />
+      </Tabs>
+    </>
   );
-}
+};
+
+const TabBarIcon = ({
+  focused,
+  icon,
+  label,
+  containerStyle,
+  pdVertical,
+}: {
+  focused: boolean;
+  icon: Source;
+  label: string;
+  containerStyle?: ViewStyle;
+  pdVertical: number;
+}) => (
+  <View
+    style={[
+      styles.tabBarIcon,
+      containerStyle,
+      {
+        backgroundColor: focused ? GREEN_300 : GREEN_100,
+        paddingVertical: pdVertical,
+      },
+    ]}
+  >
+    <AppIcon
+      path={icon}
+      size={32}
+      tintColor={focused ? "WHITE" : "GRAY_400"}
+      containerStyle={GST.MB0_5}
+    />
+    <AppText size={"SM"} color={focused ? "WHITE" : "BLACK_800"}>
+      {label}
+    </AppText>
+  </View>
+);
+
+export default TabLayout;
+
+const styles = StyleSheet.create({
+  tabBarIcon: {
+    alignItems: "center",
+    ...GST.PX1,
+    borderRadius: RF(12),
+    minWidth: RF(90),
+    justifyContent: "center",
+  },
+  tabBarStyle: {
+    borderTopRightRadius: RF(16),
+    borderTopLeftRadius: RF(16),
+    height: RF(90),
+    backgroundColor: GREEN_100,
+    borderTopWidth: 0,
+  },
+});
