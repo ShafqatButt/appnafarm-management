@@ -10,7 +10,6 @@ import {
 import AppText from "@/src/components/appText";
 import MainHeader from "@/src/components/mainHeader";
 import SafeAreaWrapper from "@/src/components/safeAreaWrapper";
-import ProfileSubHeader from "@screens/profile/profileSubHeader";
 import { GST } from "@/src/theme/globalStyles";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -20,6 +19,7 @@ import { setUserSession } from "@/src/redux/slices/mainSlice";
 import ShortcutCard from "@/src/components/shortcutCard";
 import { COLORS } from "@/src/theme/colors";
 import { RF } from "@/src/theme/responsive";
+import ProfileSubHeader from "@/src/components/profileSubHeader";
 
 const Store = () => {
   const dispatch = useAppDispatch();
