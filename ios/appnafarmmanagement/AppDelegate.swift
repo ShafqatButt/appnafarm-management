@@ -1,6 +1,8 @@
 import Expo
 import React
 import ReactAppDependencyProvider
+import GoogleMaps
+import ReactNativeConfig
 
 @UIApplicationMain
 public class AppDelegate: ExpoAppDelegate {
@@ -13,6 +15,9 @@ public class AppDelegate: ExpoAppDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
+    if let apiKey = ReactNativeConfig.env(for: "GOOGLE_MAPS_API_KEY_IOS") {
+    GMSServices.provideAPIKey(apiKey)
+  }
     let delegate = ReactNativeDelegate()
     let factory = ExpoReactNativeFactory(delegate: delegate)
     delegate.dependencyProvider = RCTAppDependencyProvider()
