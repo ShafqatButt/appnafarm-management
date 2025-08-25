@@ -31,7 +31,7 @@ import FarmStatusCard from "@/src/components/farmStatusCard";
 import ModuleCard from "@/src/components/moduleCard";
 import ShortcutCard from "@/src/components/shortcutCard";
 import MarketStatusCard from "@/src/components/marketStatusCard";
-import { router } from "expo-router";
+import { Href, router } from "expo-router";
 
 const { GREEN_250, WHITE } = COLORS;
 
@@ -99,7 +99,9 @@ const Home = () => {
                 <MarketStatusCard t={t} />
                 <DailyOpsStatusCard
                   t={t}
-                  onPressCard={() => router.push("/addDailyActivity")}
+                  onPressCard={() =>
+                    router.push("/dailyOperations/addDailyActivity" as Href)
+                  }
                 />
               </View>
             </View>

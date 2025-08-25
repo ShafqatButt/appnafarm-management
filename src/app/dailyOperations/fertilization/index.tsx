@@ -18,15 +18,16 @@ import Voice, {
   SpeechResultsEvent,
 } from "@react-native-voice/voice";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { router, useLocalSearchParams } from "expo-router";
 
-const Fertilization = ({ route }: any) => {
-  const { title, farm } = route?.params;
+const Fertilization = () => {
+  const params = useLocalSearchParams();
+  const { title } = params;
+  const farm = params.farm ? JSON.parse(params.farm as string) : null;
   const [isRecording, setIsRecording] = useState(false);
   const [text, setText] = useState("");
   const [transcript, setTranscript] = useState("");
   const [hasStarted, setHasStarted] = useState(false);
-  console.log("text :", text);
-  console.log("transcript :", transcript);
 
   useEffect(() => {
     // Set voice recognition event handlers
@@ -142,7 +143,7 @@ const Fertilization = ({ route }: any) => {
         <AppText size={"XL"} font={"SEMI_BOLD"} style={[GST.MT3, GST.MX3]}>
           {title}
         </AppText>
-        <CardDetails title={title} farm={farm} />
+        <CardDetails title={title as string} farm={farm} />
         <Pressable style={styles.fertilizationBtnContainer}>
           <AppText color={"GREEN_500"} font={"MEDIUM"}>
             {t("fertilizationDetails")}
@@ -177,14 +178,14 @@ const Fertilization = ({ route }: any) => {
         <View style={[GST.FLEX_ROW_SPACED, GST.MT5, GST.MX3, GST.MB5]}>
           <PrimaryBtn
             title={t("cancel")}
-            onPress={() => navigationRef?.current.goBack()}
+            onPress={() => router.back()}
             bgColor={"WHITE"}
             titleColor={"GREEN_500"}
             containerStyle={{ width: "47%" }}
           />
           <PrimaryBtn
             title={t("submit")}
-            onPress={() => navigate("MAIN_TABS")}
+            onPress={() => router.push("/(tabs)/home")}
             containerStyle={{ width: "47%" }}
           />
         </View>

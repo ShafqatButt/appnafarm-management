@@ -16,6 +16,7 @@ import DailyActivityRecord from "./components/dailyActivityRecord";
 import FilterModal from "./components/filterModal";
 import { Modalize } from "react-native-modalize";
 import FarmCard from "@/src/components/farmCard";
+import { Href, router } from "expo-router";
 
 export type FieldType =
   | "fromDate"
@@ -188,11 +189,7 @@ const AddDailyActivity = () => {
         colors={[GREEN_250, WHITE]}
       >
         <View style={styles.headerContainer}>
-          <AppIcon
-            path={menu}
-            size={32}
-            onPress={() => navigationRef?.current?.goBack()}
-          />
+          <AppIcon path={menu} size={32} onPress={() => router.back()} />
           <Input
             placeholder={t("searchBarPlaceholder")}
             mainContainerStyle={styles.searchBarMainContainer}
@@ -206,7 +203,9 @@ const AddDailyActivity = () => {
         </AppText>
         <Pressable
           style={styles.activityBtnContainer}
-          onPress={() => navigate("ADD_DAILY_OPERATIONS")}
+          onPress={() =>
+            router.push("/dailyOperations/addDailyOperations" as Href)
+          }
         >
           <AppIcon path={coinHand} size={24} />
           <AppText size={"BASE"} font={"MEDIUM"} style={GST.MT1}>

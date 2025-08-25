@@ -17,7 +17,7 @@ import * as Yup from "yup";
 import { COLORS } from "@/src/theme/colors";
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
 import { setUser, setUserSession } from "@/src/redux/slices/mainSlice";
-import { API } from "@services/api";
+import { API } from "@/src/services/api";
 
 const initialValues = {
   password: "",

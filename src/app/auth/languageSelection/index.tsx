@@ -11,8 +11,7 @@ import { GST } from "@/src/theme/globalStyles";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { styles } from "./styles";
-
-const { LOGIN } = ROUTES;
+import { router } from "expo-router";
 
 const languages = [
   { label: "english", code: "en" },
@@ -30,8 +29,8 @@ const LanguageSelection = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
 
   const submitHandler = () => {
-    dispatch(setAuthInitialRoute(LOGIN));
-    navigation.reset({ routes: [{ name: LOGIN }], index: 0 });
+    dispatch(setAuthInitialRoute("/auth/login"));
+    router.replace("/auth/login");
   };
 
   return (

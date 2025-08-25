@@ -9,6 +9,7 @@ import SelectBtn from "@/src/components/selectBtn";
 import PrimaryBtn from "@/src/components/primaryBtn";
 import SubHeader from "../components/subHeader";
 import { menu } from "@/src/assets/icons";
+import { router } from "expo-router";
 
 const preferences = [
   {
@@ -41,7 +42,7 @@ const PlanningStep3 = () => {
   });
 
   const handleSubmit = () => {
-    navigate("PLANNING_STEP_4");
+    router.push("/planningAndRotationSteps/step4");
   };
   return (
     <SafeAreaWrapper noPaddingTop noPaddingBottom>
@@ -55,7 +56,7 @@ const PlanningStep3 = () => {
       <View style={GST.MX1}>
         <InvestorSubHeader
           canGoBack
-          onPress={() => navigate("PLANNING_STEP_4")}
+          onPress={() => router.push("/planningAndRotationSteps/step4")}
           title={t("preferences")}
           size={"XL"}
         />

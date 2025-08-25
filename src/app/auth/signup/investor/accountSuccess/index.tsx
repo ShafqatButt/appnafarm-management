@@ -8,6 +8,7 @@ import { GST } from "@/src/theme/globalStyles";
 import AppText from "@/src/components/appText";
 import { useTranslation } from "react-i18next";
 import PrimaryBtn from "@/src/components/primaryBtn";
+import { Href, router } from "expo-router";
 
 const AccountSuccess = () => {
   const { t } = useTranslation("translation", {
@@ -33,7 +34,7 @@ const AccountSuccess = () => {
       <View style={[GST.SUBMIT_BTN_CONTAINER, GST.PX3]}>
         <PrimaryBtn
           title={"Continue"}
-          onPress={() => navigate("INVESTOR_STEP_1")}
+          onPress={() => router.push("/auth/signUp/investor/step1" as Href)}
         />
       </View>
     </SafeAreaWrapper>

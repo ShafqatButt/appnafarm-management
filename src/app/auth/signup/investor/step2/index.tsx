@@ -14,6 +14,7 @@ import { Formik, FormikProps } from "formik";
 import * as Yup from "yup";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import InvestorSubHeader from "@/src/components/investorSubHeader";
+import { Href, router } from "expo-router";
 
 const initialValues = {
   name: "",
@@ -35,7 +36,7 @@ const InvestorStep2 = () => {
   });
 
   const submitHandler = ({ name, country, address }: typeof initialValues) => {
-    navigate("INVESTOR_STEP_3");
+    router.push("auth/signUp/investor/step3" as Href);
   };
   return (
     <SafeAreaWrapper
@@ -46,7 +47,7 @@ const InvestorStep2 = () => {
       <InvestorHeader progress={0.5} />
       <View style={styles.bottomContainer}>
         <InvestorSubHeader
-          onPress={() => navigate("INVESTOR_STEP_3")}
+          onPress={() => router.push("auth/signUp/investor/step3" as Href)}
           canGoBack
           title={t("employed")}
           description={t("detail")}

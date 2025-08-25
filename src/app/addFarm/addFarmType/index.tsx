@@ -10,12 +10,14 @@ import FarmTypeCard from "../components/farmTypeCard";
 import { styles } from "./styles";
 import { showToast } from "@/src/utils/helpers";
 import { useFocusEffect } from "@react-navigation/native";
+import { Href, router, useLocalSearchParams } from "expo-router";
 
-const AddFarmType = ({ route }: any) => {
+const AddFarmType = () => {
   const [selectedType, setSelectedType] = useState<CropType | "">("");
   const [cropTypes, setCropTypes] = useState<CropType[]>([]);
-
-  const { size, location, latitude, longitude, name, marker } = route.params;
+  const params = useLocalSearchParams();
+  const { size, location, latitude, longitude, name } = params;
+  const marker = params.marker ? JSON.parse(params.marker as string) : [];
   const { t } = useTranslation("translation", {
     keyPrefix: "addFarmDetailsScreen",
   });
@@ -29,14 +31,17 @@ const AddFarmType = ({ route }: any) => {
   const getFarmEnums = async () => {};
 
   const submitHandler = () => {
-    navigate("ADD_FARM_DETAILS", {
-      crop: selectedType,
-      size,
-      location,
-      latitude,
-      longitude,
-      name,
-      marker,
+    router.push({
+      pathname: "/addFarm/addFarmDetails",
+      params: {
+        crop: selectedType,
+        size,
+        location,
+        latitude,
+        longitude,
+        name,
+        marker,
+      },
     });
   };
 

@@ -5,27 +5,34 @@ import ProgressBar from "@/src/components/progressBar";
 import SafeAreaWrapper from "@/src/components/safeAreaWrapper";
 import { GST } from "@/src/theme/globalStyles";
 import { fetchAddressFromCoords } from "@/src/utils/helpers";
+import { Href, router, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 
-const AddFarmLocation = ({ route }: any) => {
-  const { latitude, longitude, size, marker } = route.params;
-  console.log("marker in addfarmlocation ==", marker);
+const AddFarmLocation = () => {
+  const params = useLocalSearchParams();
+  const { latitude, longitude, size } = params;
+  const marker = params.marker ? JSON.parse(params.marker as string) : [];
+
   const { t } = useTranslation("translation", {
     keyPrefix: "addFarmDetailsScreen",
   });
 
   const [location, setLocation] = useState("");
   const [name, setName] = useState("");
+
   const submitHandler = () => {
-    navigate("ADD_FARM_TYPE", {
-      location: location,
-      latitude: latitude,
-      longitude: longitude,
-      size: size,
-      name: name,
-      marker: marker,
+    router.push({
+      pathname: "/addFarm/addFarmType",
+      params: {
+        location: location,
+        latitude: latitude,
+        longitude: longitude,
+        size: size,
+        name: name,
+        marker: JSON.stringify(marker),
+      },
     });
   };
 
