@@ -16,6 +16,7 @@ import {
 } from "@/src/assets/icons";
 import AppIcon from "@/src/components/appIcon";
 import FarmCard from "@/src/components/farmCard";
+import { router } from "expo-router";
 
 interface Farm {
   id: string;
@@ -117,9 +118,14 @@ const AddDailyOperations = () => {
               style={styles.dailyOperationsContainer}
               onPress={() => {
                 if (item?.title === "Fertilization") {
-                  navigate("FERTILIZATION", {
-                    title: item?.title,
-                    farm: selectedType.filter((item) => item)[0],
+                  router.push({
+                    pathname: "/dailyOperations/fertilization",
+                    params: {
+                      title: item?.title,
+                      farm: JSON.stringify(
+                        selectedType.filter((item) => item)[0]
+                      ),
+                    },
                   });
                 }
               }}

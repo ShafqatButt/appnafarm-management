@@ -11,6 +11,7 @@ import SelectBtn from "@/src/components/selectBtn";
 import SafeAreaWrapper from "@/src/components/safeAreaWrapper";
 import PrimaryBtn from "@/src/components/primaryBtn";
 import InvestorSubHeader from "@/src/components/investorSubHeader";
+import { Href, router } from "expo-router";
 
 const InvestorStep1 = () => {
   const { t } = useTranslation("translation", {
@@ -46,7 +47,7 @@ const InvestorStep1 = () => {
         <InvestorHeader progress={0.25} />
         <View style={styles.employmentContainer}>
           <InvestorSubHeader
-            onPress={() => navigate("INVESTOR_STEP_2")}
+            onPress={() => router.push("auth/signUp/investor/step2" as Href)}
             title={t("title")}
             description={t("description")}
           />
@@ -63,7 +64,7 @@ const InvestorStep1 = () => {
           <View style={[GST.SUBMIT_BTN_CONTAINER, GST.PX3]}>
             <PrimaryBtn
               title={"Continue"}
-              onPress={() => navigate("INVESTOR_STEP_2")}
+              onPress={() => router.push("auth/signUp/investor/step2" as Href)}
             />
           </View>
         </View>

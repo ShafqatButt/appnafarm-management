@@ -11,6 +11,7 @@ import PrimaryBtn from "@/src/components/primaryBtn";
 import SubHeader from "../components/subHeader";
 import FarmCard from "@/src/components/farmCard";
 import { menu } from "@/src/assets/icons";
+import { router } from "expo-router";
 
 type FieldType = "season" | "tenure";
 
@@ -78,7 +79,7 @@ const PlannignSetp1 = () => {
     setState((prev) => ({ ...prev, [key]: value }));
 
   const handleSubmit = () => {
-    navigate("PLANNING_STEP_2");
+    router.push("/planningAndRotationSteps/step2");
   };
 
   return (

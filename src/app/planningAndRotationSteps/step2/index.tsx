@@ -8,6 +8,7 @@ import PrimaryBtn from "@/src/components/primaryBtn";
 import SubHeader from "../components/subHeader";
 import FarmTypeCard from "../../addFarm/components/farmTypeCard";
 import { menu } from "@/src/assets/icons";
+import { router } from "expo-router";
 
 const cropTypes: CropType[] = [
   "corn",
@@ -26,7 +27,7 @@ const PlanningStep2 = () => {
   });
 
   const submitHandler = () => {
-    navigate("PLANNING_STEP_3");
+    router.push("/planningAndRotationSteps/step3");
   };
 
   const selectionHandler = (type: CropType, isSelected: boolean) => {

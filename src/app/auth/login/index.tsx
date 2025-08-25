@@ -8,7 +8,7 @@ import Pressable from "@/src/components/pressable";
 import PrimaryBtn from "@/src/components/primaryBtn";
 import SafeAreaWrapper from "@/src/components/safeAreaWrapper";
 import { useAppDispatch } from "@/src/redux/hooks";
-import { API } from "@services/api";
+import { API } from "@/src/services/api";
 import { GST } from "@/src/theme/globalStyles";
 import { ANDROID } from "@/src/utils/constants";
 import { getPlainNumber, showToast } from "@/src/utils/helpers";
@@ -22,6 +22,7 @@ import * as Yup from "yup";
 import { styles } from "./styles";
 import LoadingIndicator from "@/src/components/loadingIndicator";
 import { setUser, setUserSession } from "@/src/redux/slices/mainSlice";
+import { Href, router } from "expo-router";
 
 const initialValues = {
   phoneNumber: "",
@@ -82,6 +83,7 @@ const Login = () => {
       showToast("Success", "You have logged in", "success");
       dispatch(setUser(res?.data));
       dispatch(setUserSession(true));
+      router.replace("/(tabs)/home");
     } catch (error: any) {
       showToast("Error", error?.response?.data?.message, "error");
     } finally {
@@ -167,7 +169,7 @@ const Login = () => {
                 <AppText size={"BASE"}>{t("newToApp")}</AppText>
                 <Pressable
                   onPress={() => {
-                    navigate("SIGNUP_STEP_1");
+                    router.push("/auth/signUp/step1" as Href);
                   }}
                 >
                   <AppText font={"BOLD"} size={"LG"} color={"GREEN_500"}>

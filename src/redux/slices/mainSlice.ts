@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
+import { Href } from 'expo-router';
 
 const initialState: MainSliceState = {
   user: null,
-  // authInitialRoute: ROUTES.LANGUAGE_SELECTION,
+  authInitialRoute: "/auth/languageSelection",
   isLoggedIn: false,
   preferredLanguage: {label: 'English', code: 'en'},
   myFarms: [

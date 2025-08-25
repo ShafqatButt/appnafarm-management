@@ -21,7 +21,8 @@ import { useTranslation } from "react-i18next";
 import { showToast } from "@/src/utils/helpers";
 import LoadingIndicator from "@/src/components/loadingIndicator";
 import { useAppSelector } from "@/src/redux/hooks";
-import { API } from "@services/api";
+import { API } from "@/src/services/api";
+import { router } from "expo-router";
 
 const CELL_COUNT = 6;
 
@@ -60,7 +61,12 @@ const SignupStep3 = ({ route }: any) => {
       const res = await API.VERIFY_OTP(params);
       if (res?.status === 200) {
         showToast("Success", res?.data?.message, "success");
-        navigate("SIGNUP_STEP_4", { plainNumber });
+        router.push({
+          pathname: "/auth/signup/step4",
+          params: {
+            plainNumber,
+          },
+        });
       }
     } catch (error: any) {
       showToast("Error", error?.response?.data?.error, "error");

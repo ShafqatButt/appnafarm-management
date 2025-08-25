@@ -12,6 +12,7 @@ import FarmCard from "@/src/components/farmCard";
 import PlusBtn from "@/src/components/plusBtn";
 import DropdownBtn from "@/src/components/dropdownBtn";
 import CropSeasonSlider from "@/src/components/cropSeasonSlider";
+import { Href, router } from "expo-router";
 
 type FieldType = "plan" | "season";
 
@@ -136,7 +137,7 @@ const PlanningAndRotation = () => {
       <PlusBtn
         title={t("requestPlan")}
         containerStyle={GST.MT1}
-        onPress={() => navigate("PLANNING_STEP_1")}
+        onPress={() => router.push("planningAndRotationSteps/step1" as Href)}
       />
       <View style={[GST.MX3, GST.MT5]}>
         {fields.map(({ type, data }) => (

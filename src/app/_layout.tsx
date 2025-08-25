@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Href, Redirect, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -10,8 +10,10 @@ import { Provider } from "react-redux";
 import { persistor, store } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { Host } from "react-native-portalize";
-import { StatusBar } from "react-native";
+import { LogBox, StatusBar } from "react-native";
 import { COLORS } from "../theme/colors";
+import { initialApiConfig } from "../services/api";
+import { useAppSelector } from "../redux/hooks";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,6 +47,8 @@ export default function RootLayout() {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
+      initialApiConfig();
+      LogBox.ignoreAllLogs();
     }
   }, [loaded]);
 
@@ -56,6 +60,10 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const { isLoggedIn, authInitialRoute } = useAppSelector(
+    (state) => state.main
+  );
+
   return (
     <>
       <GestureHandlerRootView style={GST.FLEX}>
@@ -68,6 +76,9 @@ function RootLayoutNav() {
                   barStyle={"dark-content"}
                 />
                 <Stack
+                  initialRouteName={
+                    isLoggedIn ? "/(tabs)/home" : authInitialRoute
+                  }
                   screenOptions={{ headerShown: false, animation: "none" }}
                 >
                   <Stack.Screen

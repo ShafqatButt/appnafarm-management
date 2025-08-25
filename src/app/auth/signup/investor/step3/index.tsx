@@ -8,6 +8,7 @@ import { GST } from "@/src/theme/globalStyles";
 import SelectBtn from "@/src/components/selectBtn";
 import PrimaryBtn from "@/src/components/primaryBtn";
 import InvestorSubHeader from "@/src/components/investorSubHeader";
+import { Href, router } from "expo-router";
 
 const InvestorStep3 = () => {
   const { t } = useTranslation("translation", {
@@ -46,7 +47,7 @@ const InvestorStep3 = () => {
       <View style={styles.bottomContainer}>
         <InvestorSubHeader
           canGoBack
-          onPress={() => navigate("INVESTOR_STEP_4")}
+          onPress={() => router.push("auth/signUp/investor/step4" as Href)}
           title={t("title")}
           description={t("subTitle")}
         />
@@ -63,7 +64,7 @@ const InvestorStep3 = () => {
         <View style={[GST.SUBMIT_BTN_CONTAINER, GST.PX3]}>
           <PrimaryBtn
             title={"Continue"}
-            onPress={() => navigate("INVESTOR_STEP_4")}
+            onPress={() => router.push("auth/signUp/investor/step4" as Href)}
           />
         </View>
       </View>

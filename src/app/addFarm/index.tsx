@@ -37,6 +37,7 @@ import {
 import { COLORS } from "@/src/theme/colors";
 import ActionBtn from "@/src/components/actionBtn";
 import MapTypeBtn from "@/src/components/mapTypeBtn";
+import { Href, router } from "expo-router";
 
 const REGION_DELTA = { latitudeDelta: 0.007, longitudeDelta: 0.007 };
 
@@ -243,7 +244,7 @@ const AddFarm = () => {
         icon={arrowBack}
         tintColor={"WHITE"}
         onPress={() => {
-          navigationRef?.current?.goBack();
+          router.back();
         }}
         onPlaceSelection={placeSelectionHandler}
       />
@@ -311,11 +312,14 @@ const AddFarm = () => {
               size={"BASE"}
               onPress={() => {
                 toggleSaveModal();
-                navigate("ADD_FARM_LOCATION", {
-                  latitude: markers[0].latitude,
-                  longitude: markers[0].longitude,
-                  size: farmArea,
-                  marker: markers,
+                router.push({
+                  pathname: "/addFarm/addFarmLocation",
+                  params: {
+                    latitude: markers[0].latitude,
+                    longitude: markers[0].longitude,
+                    size: farmArea,
+                    marker: JSON.stringify(markers),
+                  },
                 });
               }}
             >
