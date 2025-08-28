@@ -16,7 +16,7 @@ import MainHeader from "@/src/components/mainHeader";
 import FarmStats from "@/src/components/farmStats";
 import FarmCard from "@/src/components/farmCard";
 import FarmDetailsCard from "@/src/components/farmDetailsCard";
-import { Href, router } from "expo-router";
+import { router } from "expo-router";
 
 const Appnafarm = () => {
   const [myFarms, setMyFarms] = useState<Farm[]>([]);
@@ -80,7 +80,7 @@ const Appnafarm = () => {
         icon={arrowBack}
         tintColor={"WHITE"}
         onPress={() => {
-          router.push("/(tabs)" as Href);
+          router.push("/(tabs)/home");
           setSearchText("");
         }}
         value={searchText}
@@ -100,7 +100,7 @@ const Appnafarm = () => {
         <ImageBackground source={lines} style={styles.statsMainContainer}>
           <Pressable
             style={styles.actionBtnContainer}
-            onPress={() => router.push("addFarm" as Href)}
+            onPress={() => router.push("/addFarm")}
           >
             <AppIcon path={plus} size={24} containerStyle={GST.MR2} />
             <AppText size={"SM"} color={"GREEN_500"} font={"SEMI_BOLD"}>

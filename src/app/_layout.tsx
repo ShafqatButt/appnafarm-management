@@ -1,4 +1,3 @@
-import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -16,11 +15,6 @@ import { initialApiConfig } from "../services/api";
 import "../i18n/i18n.config";
 import "react-native-gesture-handler";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -37,7 +31,7 @@ export default function RootLayout() {
           <PersistGate persistor={persistor}>
             <Host>
               <StatusBar
-                backgroundColor={COLORS.WHITE}
+                backgroundColor={COLORS.GRAY_300}
                 barStyle={"dark-content"}
               />
               <RootLayoutNav />
@@ -53,6 +47,7 @@ function RootLayoutNav() {
   return (
     <>
       <Stack screenOptions={{ headerShown: false, animation: "none" }}>
+        <Stack.Screen name="index" />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="appnafarm" />
         <Stack.Screen name="addFarm" />

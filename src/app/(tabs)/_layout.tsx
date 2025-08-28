@@ -10,8 +10,6 @@ import { StyleSheet, View, ViewStyle } from "react-native";
 import { Source } from "react-native-fast-image";
 import { Tabs } from "expo-router";
 
-const Tab = createBottomTabNavigator();
-
 const { GREEN_300, GREEN_100 } = COLORS;
 
 const TabLayout = () => {
@@ -21,7 +19,6 @@ const TabLayout = () => {
         screenOptions={{
           tabBarStyle: styles.tabBarStyle,
           tabBarShowLabel: false,
-          tabBarHideOnKeyboard: true,
           headerShown: false,
         }}
       >
@@ -30,12 +27,7 @@ const TabLayout = () => {
           options={{
             title: "Home",
             tabBarIcon: (props) => (
-              <TabBarIcon
-                {...props}
-                icon={home}
-                label={"Home"}
-                pdVertical={RF(12)}
-              />
+              <TabBarIcon {...props} icon={home} label={"Home"} />
             ),
           }}
         />
@@ -44,12 +36,7 @@ const TabLayout = () => {
           options={{
             title: "Appna Store",
             tabBarIcon: (props) => (
-              <TabBarIcon
-                {...props}
-                icon={store}
-                label={"Appna Store"}
-                pdVertical={RF(12)}
-              />
+              <TabBarIcon {...props} icon={store} label={"Appna Store"} />
             ),
           }}
         />
@@ -58,12 +45,7 @@ const TabLayout = () => {
           options={{
             title: "AgriBook",
             tabBarIcon: (props) => (
-              <TabBarIcon
-                {...props}
-                icon={machine}
-                label={"AgriBook"}
-                pdVertical={RF(12)}
-              />
+              <TabBarIcon {...props} icon={machine} label={"AgriBook"} />
             ),
           }}
         />
@@ -76,7 +58,6 @@ const TabLayout = () => {
                 {...props}
                 icon={planning}
                 label={"Planning & rotation"}
-                pdVertical={RF(4)}
               />
             ),
           }}
@@ -91,13 +72,11 @@ const TabBarIcon = ({
   icon,
   label,
   containerStyle,
-  pdVertical,
 }: {
   focused: boolean;
   icon: Source;
   label: string;
   containerStyle?: ViewStyle;
-  pdVertical: number;
 }) => (
   <View
     style={[
@@ -105,7 +84,6 @@ const TabBarIcon = ({
       containerStyle,
       {
         backgroundColor: focused ? GREEN_300 : GREEN_100,
-        paddingVertical: pdVertical,
       },
     ]}
   >
@@ -115,7 +93,7 @@ const TabBarIcon = ({
       tintColor={focused ? "WHITE" : "GRAY_400"}
       containerStyle={GST.MB0_5}
     />
-    <AppText size={"SM"} color={focused ? "WHITE" : "BLACK_800"}>
+    <AppText size={"XS"} color={focused ? "WHITE" : "BLACK_800"}>
       {label}
     </AppText>
   </View>
@@ -128,14 +106,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     ...GST.PX1,
     borderRadius: RF(12),
-    minWidth: RF(90),
+    minWidth: RF(70),
+    minHeight: RF(70),
     justifyContent: "center",
+    marginTop: RF(50),
   },
   tabBarStyle: {
     borderTopRightRadius: RF(16),
     borderTopLeftRadius: RF(16),
-    height: RF(90),
-    backgroundColor: GREEN_100,
-    borderTopWidth: 0,
+    height: RF(100),
+    backgroundColor: COLORS.GREEN_100,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
