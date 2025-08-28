@@ -22,7 +22,7 @@ import * as Yup from "yup";
 import { styles } from "./styles";
 import LoadingIndicator from "@/src/components/loadingIndicator";
 import { setUser, setUserSession } from "@/src/redux/slices/mainSlice";
-import { Href, router } from "expo-router";
+import { router } from "expo-router";
 
 const initialValues = {
   phoneNumber: "",
@@ -169,7 +169,7 @@ const Login = () => {
                 <AppText size={"BASE"}>{t("newToApp")}</AppText>
                 <Pressable
                   onPress={() => {
-                    router.push("/auth/signUp/step1" as Href);
+                    router.push("/signup/step1");
                   }}
                 >
                   <AppText font={"BOLD"} size={"LG"} color={"GREEN_500"}>

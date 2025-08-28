@@ -8,7 +8,7 @@
     "submitBtnLabel": "Continue"
   },
   "loginScreen": {
-    "title": "Welcome to AppnaFarm Investments",
+    "title": "Welcome to AppnaFarm Management",
     "subTitle": "Please enter your login information to continue.",
     "phoneFieldLabel": "Phone Number",
     "phoneFieldPlaceholder": "Enter your phone number.",
@@ -113,7 +113,8 @@
     "crop": "Crop",
     "status": "Status",
     "pending": "Not Published",
-    "published": "Published"
+    "published": "Published",
+    "appnaFarm": "AppnaFarm"
   },
   "addfarmScreen": {
     "addFarm": "Add Farm",
@@ -153,10 +154,13 @@
     "typePlaceholder": "Select Soil Type",
     "sourceLabel": "Irrigation Source",
     "sourcePlaceholder": "Select Irrigation Source",
+    "stageLabel": "Crop Stage",
+    "stagePlaceholder": "Select Crop Stage",
     "methodSheetTitle": "Select Sowing Method",
     "varietySheetTitle": "Select Sowing Variety",
     "typeSheetTitle": "Select Sowing Type",
     "sourceSheetTitle": "Select Irrigation Source",
+    "stageSheetTitle": "Select Crop Stage",
     "success": "Success",
     "farmSavedDescription": "Your Farm has been added successfully!",
     "name": "Name",
@@ -209,29 +213,23 @@
     "learn": "Learn",
     "rate": "Rate the App",
     "feedback": "Submit Feedback",
-    "friend": "Refer a Friend",
-    "bank": "Bank account"
+    "friend": "Refer a Friend"
   },
   "projectsScreen": {
     "projects": "Projects",
     "availableProjects": "Available Projects",
     "riceTitle": "Rice Paddy Field SuperKernel",
     "wheatTitle": "Wheat Field Project",
-    "annualRoi": "Annual ROI",
+    "return": "Annualised Return",
     "grossYield": "Project Gross Yield",
     "netYield": "Project Net Yield",
     "funded": "Funded",
     "acres": "Acres",
     "fundedProjects": "Funded Projects",
-    "completedProjects": "Completed Projects",
-    "noProjectAvailable": "No Projects Available",
-    "startDate": "Start Date",
-    "totalRoi": "Total  ROI",
-    "payout": "Payout",
-    "roi": "ROI"
+    "completedProjects": "Completed Projects"
   },
   "rewardsScreen": {
-    "dashboard": "My Dashboard",
+    "rewards": "Rewards",
     "totalEarned": "Total Rewards Earned:",
     "currentBalance": "View Current Balance",
     "cashBack": "Cashback",
@@ -246,14 +244,6 @@
     "youGet": "You get ",
     "investment": "after they invest ",
     "inviteFriend": "Invite a Friend"
-  },
-  "dashboardScreen": {
-   "balance": "Available Balance",
-   "explore": "Lets explore,",
-   "cash": "CASH BALANCE",
-   "reward":"REWARD BALANCE",
-   "insight":"Quick Insights",
-   "dashboard":"My Dashboard"
   },
   "planningAndRotationScreen": {
     "searchBarPlaceholder": "Search: eg. rice farm",
@@ -314,11 +304,7 @@
     "portfolio": "Current Portfolio:",
     "weekly": "Weekly",
     "finance": "Key Finances",
-    "insight": "Quick Insights",
-    "allProjects": "All Projects",
-    "appnaFarm": "AppnaFarm",
-    "riceTitle": "Rice Paddy Field SuperKernel",
-    "wheatTitle": "Wheat Field Project"
+    "insight": "Quick Insights"
   },
   "walletScreen": {
     "title": "My Wallet",
@@ -344,111 +330,44 @@
     "startDatePlaceholder": "Select Date",
     "endDatePlaceholder": "Select Date"
   },
-  "addFundsStep1": {
-    "paymentMethod": "Let’s add payment method",
-    "experience": "Experience the power of financial organization with our platform",
-    "continue": "Continue"
+  "addDailyActivityScreen": {
+    "searchBarPlaceholder": "Search: eg. rice farm",
+    "dailyOperations": "Daily Operations",
+    "addDailyBtnHeading": "Add Daily Activity",
+    "selectFarm": "Select farm(s) to view the record",
+    "selectAll": "Select All",
+    "unSelectAll" : "Unselect All",
+    "acres": "{{size}} Acres",
+    "recentRecord": "Your Most Recent Record",
+    "filter": "Filter",
+    "date" : "Date",
+    "activityType": "Activity Type",
+    "description": "Description",
+    "applyFilter": "Apply Filter",
+    "activityTypeLabel": "Activity Type",
+    "itemLabel": "Item",
+    "statusLabel": "Status",
+    "fromDateLabel": "From date",
+    "toDateLabel": "To Date",
+    "activityTypePlaceholder": "Select Account",
+    "itemPlaceholder": "Select Item",
+    "statusPlaceholder": "All",
+    "fromDatePlaceholder": "Select Date",
+    "toDatePlaceholder": "Select Date",
+    "close": "Close"
   },
-  "addFundsStep2": {
-    "paymentMethod":"Choose the Payment Method",
-    "experience": "In order to make your experience refined, we are required to ask about your employment status.",
-    "amazon": "Amazon Pay",
-    "checkout_2": "2Checkout",
-    "checkout": "Checkout.com",
-    "tap": "Tap",
-    "myfatoorah": "MyFatroorah"
+  "addDailyOperationsScreen": {
+    "title": "Daily Operations",
+    "selectFarm": "Select Farm",
+    "addFarm": "Add Farm +",
+    "acres": "{{size}} Acres"
   },
-  "addFundsStep3": {
-    "cardDetail" : "Enter Card Details",
-    "process": "Please enter your card details for the further process.",
-    "paymentMethod": "Payment Method",
-    "account": "Account Number",
-    "accountName": "Account Name",
-    "expiryDate": "Expiry Date",
-    "cvv": "CVV ",
-    "remember": "Remember me",
-    "continue": "Continue"
-  },
-  "addFundsStep4": {
-    "investment": "Enter Investing Amount",
-    "process": "Please enter your card details for the further process.",
-    "amount": "Enter Amount",
-    "continue": "Continue"
-  },
-  "addFundsStep5": {
-   "checkout": "Checkout",
-   "process": "Please enter your card details for the further process.",
-   "paymentAccount": "Payment Account",
-   "accountName": "Account Name",
-   "accountNumber": "Account Number",
-   "paymentMethod": "Payment Method",
-   "continue": "Proceed"
-  },
-  "addFundsStep6": {
-   "invested": "Successfully Invested!",
-   "investedSuccessfully": "You have invested in the project successfully.",
-   "continue": "Proceed"
-  },
-  "investmentProjectsScreen": {
-    "title": "Investment Details",
-    "annualReturn": "Annual Return",
-    "contractReturn": "Contract Return",
-    "contract": "Contract",
-    "investmentDescription": "All the projects are managed by the company  to ensure the highest standards of security and profitability for our investors. We maintain a strategic reserve fund to safeguard against market volatility and unexpected challenges, ensuring that all commitments to investors are met.",
-    "startDate": "Start Date",
-    "projectROI": "Project  ROI",
-    "payout": "Payout",
-    "viewDetail": "View Detail",
-    "plantation": "Plantation location",
-    "managerAndStatistics": "Manager & Statistics",
-    "profitSolution": "Profit simulation",
-    "invest": "Invest Now"
-  },
-  "projectDetailScreen": {
-    "title": "Project detail",
-    "profit": "Profit simulation",
-    "calculate": "Calculate",
-    "unit": "Unit",
-    "duration": "Duration",
-    "month": "(months)",
-    "netProfit": "Net Profit",
-    "approx": "(approx)",
-    "roi": "ROI",
-    "paragraph_1": "By selecting the investment option above, you're committing to an 8-month project with a projected profit of $900, resulting in a 30% Return on Investment (ROI). This simulation provides an estimate based on the current market and operational conditions, allowing you to understand potential returns on your capital.",
-    "paragraph_2": "If you choose to increase the number of units invested, the potential profit scales proportionally. For example, doubling your units will potentially double your profit, leading to a higher total return over the same duration. Furthermore, larger investments may provide opportunities for exclusive perks or access to premium farm operations, which can further enhance profitability by improving crop quality or output.",
-    "checkout": "Proceed to checkout"
-  },
-  "checkoutScreen": {
-    "title": "Checkout",
-    "summary": "Investment summary",
-    "units": "Units",
-    "investmentType": "Investment type",
-    "investment": "Your investment",
-    "duration": "Duration",
-    "payout": "Expected payout",
-    "checkBalance": "Check your balance",
-    "ownership": "Farm ownership",
-    "ownerName": "Name of Owner",
-    "landHolding": "Land holding",
-    "projectCompleted": "Project completed",
-    "rating": "Rating",
-    "investLater": "Invest Later",
-    "investNow": "Invest Now"
-},
-"portfolioProjectScreen": {
-  "title": "Portfolio-Project progress",
-  "projectProgress": "Project progress",
-  "plantingSeeds": "Planting Seeds",
-  "landCultivation": "Land Cultivation"
-},
-"fatoorahPaymentScreen":{
-  "enterAmount": "Please Enter Your Amount",
-  "enterYourAmount": "Enter Your Amount",
-  "selectMethod": "Please Select Payment Method",
-  "knet": "Knet",
-  "creditCard": "Credit Card(Visa/Master)",
-  "applePay": "Apple Pay(KNET only)",
-  "googlePay": "Google Pay(KNET only)",
-  "pay": "Pay"
-}
+  "fertilizationScreen": {
+    "title": "Daily Operations",
+    "fertilizationDetails": "Add Fertilization Details  +",
+    "recordOperations": "record daily operations",
+    "recordingInputPlaceholder": "Describe your fertilization activity (e.g one bag of DAP is distributed in the field ",
+    "cancel": "Cancel",
+    "submit": "Submit"
+  }
 }

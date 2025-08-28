@@ -47,5 +47,8 @@
         <data android:scheme="appnafarmmanagement"/>
       </intent-filter>
     </activity>
+     <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyCXhCd0sMWvXdHPsMBldiVXsRRzggucePU"/>
   </application>
 </manifest>

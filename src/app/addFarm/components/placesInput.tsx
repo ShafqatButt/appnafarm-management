@@ -4,6 +4,7 @@ import {
   GooglePlaceData,
   GooglePlaceDetail,
   GooglePlacesAutocomplete,
+  GooglePlacesAutocompleteRef,
 } from "react-native-google-places-autocomplete";
 import { HP, RF, WP } from "@/src/theme/responsive";
 import Config from "react-native-config";
@@ -17,7 +18,7 @@ interface PlacesInputProps {
 }
 
 const PlacesInput = ({ onPlaceSelection }: PlacesInputProps) => {
-  const inputRef: any = useRef(null);
+  const inputRef = useRef<GooglePlacesAutocompleteRef>(null);
   return (
     <GooglePlacesAutocomplete
       ref={inputRef}
