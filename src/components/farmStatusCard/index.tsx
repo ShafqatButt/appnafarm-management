@@ -9,6 +9,7 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import GraphicBtnWrapper from "@/src/components/graphicCardWrapper";
 import StatusValue from "../statusValue";
+import { useRouter } from "expo-router";
 
 type Props = {
   plots: number;
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const FarmStatusCard = ({ plots, acres, crops, t }: Props) => {
+  const router = useRouter();
   return (
     <GraphicBtnWrapper
       imageSrc={farmPoster}
@@ -49,13 +51,13 @@ const FarmStatusCard = ({ plots, acres, crops, t }: Props) => {
       </View>
       <FloatingBtn
         icon={plus}
-        onPress={() => navigate("ADD_FARM")}
+        onPress={() => router.push("/addFarm")}
         bottom={0}
         left={0}
       />
       <FloatingBtn
         icon={linkArrow}
-        onPress={() => navigate("APPNAFARM")}
+        onPress={() => router.push("/appnafarm")}
         bottom={0}
         right={0}
       />

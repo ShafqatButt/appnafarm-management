@@ -6,10 +6,10 @@ import { GST } from "@/src/theme/globalStyles";
 import { RF } from "@/src/theme/responsive";
 import React from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { FARM_POSTER } from "../addFarm/components/farmTypeCard";
 import AppIcon from "@/src/components/appIcon";
 import Pressable from "@/src/components/pressable";
 import FarmCardValue from "../farmCardValue";
+import { FARM_POSTER } from "@/src/app/addFarm/components/farmTypeCard";
 
 type Props = {
   title?: string;

@@ -1,9 +1,9 @@
-import AppIcon from "@components/appIcon";
-import AppText from "@components/appText";
-import Pressable from "@components/pressable";
-import { COLORS } from "@theme/colors";
-import { GST } from "@theme/globalStyles";
-import { RF } from "@theme/responsive";
+import AppIcon from "@/src/components/appIcon";
+import AppText from "@/src/components/appText";
+import Pressable from "@/src/components/pressable";
+import { COLORS } from "@/src/theme/colors";
+import { GST } from "@/src/theme/globalStyles";
+import { RF } from "@/src/theme/responsive";
 import React from "react";
 import { StyleSheet, ViewStyle } from "react-native";
 

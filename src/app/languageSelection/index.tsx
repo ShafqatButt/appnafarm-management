@@ -19,7 +19,7 @@ const languages = [
   { label: "urdu", code: "ur" },
 ];
 
-const LanguageSelection = ({ navigation }: any) => {
+const LanguageSelection = () => {
   const { preferredLanguage } = useAppSelector((state) => state.main);
 
   const { t } = useTranslation("translation", {
@@ -29,8 +29,8 @@ const LanguageSelection = ({ navigation }: any) => {
   const dispatch = useAppDispatch();
 
   const submitHandler = () => {
-    dispatch(setAuthInitialRoute("/auth/login"));
-    router.replace("/auth/login");
+    dispatch(setAuthInitialRoute("/login"));
+    router.replace("/login");
   };
 
   return (
