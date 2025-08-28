@@ -1,9 +1,9 @@
+import { AddMyFarmAction, MainSliceState, SetPreferredLanguageAction, SetUserAction } from '@/src/types/mainSlice';
 import {createSlice} from '@reduxjs/toolkit';
-import { Href } from 'expo-router';
 
 const initialState: MainSliceState = {
   user: null,
-  authInitialRoute: "/auth/languageSelection",
+  authInitialRoute: "/languageSelection",
   isLoggedIn: false,
   preferredLanguage: {label: 'English', code: 'en'},
   myFarms: [
@@ -92,6 +92,7 @@ export const mainSlice = createSlice({
     handleLogout: state => {
       state.user = null;
       state.isLoggedIn = false;
+      
     },
 
     resetMainReducer: () => initialState,

@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import { Href, Redirect, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -13,174 +13,108 @@ import { Host } from "react-native-portalize";
 import { LogBox, StatusBar } from "react-native";
 import { COLORS } from "../theme/colors";
 import { initialApiConfig } from "../services/api";
-import { useAppSelector } from "../redux/hooks";
+import "../i18n/i18n.config";
+import "react-native-gesture-handler";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
 
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
-};
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    ExtraBold: require("../assets/fonts/Urbanist-ExtraBold.ttf"),
-    Bold: require("../assets/fonts/Urbanist-Bold.ttf"),
-    SemiBold: require("../assets/fonts/Urbanist-SemiBold.ttf"),
-    Medium: require("../assets/fonts/Urbanist-Medium.ttf"),
-    Regular: require("../assets/fonts/Urbanist-Regular.ttf"),
-    Italic: require("../assets/fonts/Urbanist-Italic.ttf"),
-    Light: require("../assets/fonts/Urbanist-Light.ttf"),
-  });
-
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    initialApiConfig();
+    LogBox.ignoreAllLogs();
+  }, []);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-      initialApiConfig();
-      LogBox.ignoreAllLogs();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return <RootLayoutNav />;
+  return (
+    <GestureHandlerRootView style={GST.FLEX}>
+      <SafeAreaProvider>
+        <Provider store={store}>
+          <PersistGate persistor={persistor}>
+            <Host>
+              <StatusBar
+                backgroundColor={COLORS.WHITE}
+                barStyle={"dark-content"}
+              />
+              <RootLayoutNav />
+            </Host>
+          </PersistGate>
+        </Provider>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
+  );
 }
 
 function RootLayoutNav() {
-  const { isLoggedIn, authInitialRoute } = useAppSelector(
-    (state) => state.main
-  );
-
   return (
     <>
-      <GestureHandlerRootView style={GST.FLEX}>
-        <SafeAreaProvider>
-          <Provider store={store}>
-            <PersistGate persistor={persistor}>
-              <Host>
-                <StatusBar
-                  backgroundColor={COLORS.WHITE}
-                  barStyle={"dark-content"}
-                />
-                <Stack
-                  initialRouteName={
-                    isLoggedIn ? "/(tabs)/home" : authInitialRoute
-                  }
-                  screenOptions={{ headerShown: false, animation: "none" }}
-                >
-                  <Stack.Screen
-                    name="(tabs)"
-                    options={{ headerShown: false }}
-                  />
-                  <Stack.Screen name="appnafarm" />
-                  <Stack.Screen
-                    name="addFarm"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="addFarm/addFarmLocation"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="addFarm/addFarmType"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="addFarm/addFarmDetails"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="planningAndRotationSteps/step1"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="planningAndRotationSteps/step2"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="planningAndRotationSteps/step3"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="planningAndRotationSteps/step4"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="dailyOperations/addDailyActivity"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="dailyOperations/addDailyOperations"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="dailyOperations/fertilization"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  {/* AUTH STACK */}
-                  <Stack.Screen
-                    name="auth/languageSelection"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/login"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/investor/accountSuccess"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/investor/step1"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/investor/step2"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/investor/step3"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/investor/step4"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/step1"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/step2"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/step3"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                  <Stack.Screen
-                    name="auth/signUp/step4"
-                    options={{ presentation: "transparentModal" }}
-                  />
-                </Stack>
-              </Host>
-            </PersistGate>
-          </Provider>
-        </SafeAreaProvider>
-      </GestureHandlerRootView>
+      <Stack screenOptions={{ headerShown: false, animation: "none" }}>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="appnafarm" />
+        <Stack.Screen name="addFarm" />
+        <Stack.Screen name="addFarmLocation" />
+        <Stack.Screen name="addFarmType" />
+        <Stack.Screen name="addFarmDetails" />
+        <Stack.Screen
+          name="planningAndRotationStep1"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="planningAndRotationSteps2"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="planningAndRotationSteps3"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="planningAndRotationSteps4"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen name="addDailyActivity" />
+        <Stack.Screen name="addDailyOperations" />
+        <Stack.Screen name="fertilization" />
+        {/* AUTH STACK */}
+        <Stack.Screen name="languageSelection" />
+        <Stack.Screen name="login" />
+        <Stack.Screen name="accountSuccess" />
+        <Stack.Screen
+          name="signupInvestorStep1"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupInvestorStep2"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupInvestorStep3"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupInvestorStep4"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupStep1"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupStep2"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupStep3"
+          options={{ presentation: "transparentModal" }}
+        />
+        <Stack.Screen
+          name="signupStep4"
+          options={{ presentation: "transparentModal" }}
+        />
+      </Stack>
     </>
   );
 }

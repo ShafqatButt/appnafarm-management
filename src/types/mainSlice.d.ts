@@ -1,6 +1,8 @@
+import { Href } from "expo-router";
+
 interface MainSliceState {
   user: null | User;
-  authInitialRoute: string;
+  authInitialRoute: Href;
   isLoggedIn: boolean;
   preferredLanguage: Language;
   myFarms: Farm[];
