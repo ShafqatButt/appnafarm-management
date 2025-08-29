@@ -48,7 +48,7 @@ const AddFarmHeader = ({
           onPress={onPress}
           tintColor={tintColor}
         />
-        <PlacesInput onPlaceSelection={onPlaceSelection} />
+        {/* <PlacesInput onPlaceSelection={onPlaceSelection} /> */}
         <AppImage path={bell} size={40} tintColor={"WHITE"} />
       </View>
     </View>

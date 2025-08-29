@@ -22,12 +22,13 @@ import { showToast } from "@/src/utils/helpers";
 import LoadingIndicator from "@/src/components/loadingIndicator";
 import { useAppSelector } from "@/src/redux/hooks";
 import { API } from "@/src/services/api";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 const CELL_COUNT = 6;
 
-const SignupStep3 = ({ route }: any) => {
-  const { plainNumber } = route?.params;
+const SignupStep3 = () => {
+  const params = useLocalSearchParams();
+  const { plainNumber } = params;
   const [value, setValue] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -62,7 +63,7 @@ const SignupStep3 = ({ route }: any) => {
       if (res?.status === 200) {
         showToast("Success", res?.data?.message, "success");
         router.push({
-          pathname: "/auth/signup/step4",
+          pathname: "/signup/step4",
           params: {
             plainNumber,
           },

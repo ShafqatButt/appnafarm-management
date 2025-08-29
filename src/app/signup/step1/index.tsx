@@ -11,7 +11,8 @@ import { View } from "react-native";
 import { styles } from "./styles";
 import { useAppDispatch } from "@/src/redux/hooks";
 import { setUser } from "@/src/redux/slices/mainSlice";
-import { Href, router } from "expo-router";
+import { router } from "expo-router";
+import { UserType } from "@/src/types/mainSlice";
 
 const SignupStep1 = () => {
   const { t } = useTranslation("translation", {
@@ -34,7 +35,7 @@ const SignupStep1 = () => {
 
   const submitHandler = () => {
     router.push({
-      pathname: "/auth/signup/step2",
+      pathname: "/signup/step2",
       params: {
         userType: selectedRoles.id as UserType,
       },
