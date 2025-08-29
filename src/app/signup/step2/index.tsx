@@ -18,7 +18,7 @@ import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
 import { setUser } from "@/src/redux/slices/mainSlice";
 import LoadingIndicator from "@/src/components/loadingIndicator";
 import { API } from "@/src/services/api";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 const initialValues = {
   name: "",
@@ -28,11 +28,13 @@ const initialValues = {
 
 const asYouType = new AsYouType("PK");
 
-const SignupStep2 = ({ route }: any) => {
+const SignupStep2 = () => {
   const [keyPress, setKeyPress] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { userType } = route.params;
+  const params = useLocalSearchParams();
+
+  const { userType } = params;
   const formikRef = useRef<FormikProps<typeof initialValues>>(null);
 
   const { user } = useAppSelector((state) => state.main);
@@ -72,7 +74,7 @@ const SignupStep2 = ({ route }: any) => {
         showToast("Success", res?.data?.message, "success");
         dispatch(setUser({ ...user, name, phone: plainNumber, email }));
         router.push({
-          pathname: "/auth/signup/step3",
+          pathname: "/signup/step3",
           params: {
             plainNumber,
           },

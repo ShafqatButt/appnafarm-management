@@ -15,7 +15,7 @@ public class AppDelegate: ExpoAppDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
-    if let apiKey = ReactNativeConfig.env(for: "GOOGLE_MAPS_API_KEY_IOS") {
+    if let apiKey = ("AIzaSyD976RZenWE5_jJtFTBPNMYMwl5dQWk4HE") {
     GMSServices.provideAPIKey(apiKey)
   }
     let delegate = ReactNativeDelegate()

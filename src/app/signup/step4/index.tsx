@@ -18,6 +18,7 @@ import { COLORS } from "@/src/theme/colors";
 import { useAppDispatch, useAppSelector } from "@/src/redux/hooks";
 import { setUser, setUserSession } from "@/src/redux/slices/mainSlice";
 import { API } from "@/src/services/api";
+import { useLocalSearchParams } from "expo-router";
 
 const initialValues = {
   password: "",
@@ -25,8 +26,9 @@ const initialValues = {
 };
 const { GREEN_500, GRAY_100 } = COLORS;
 
-const SignupStep4 = ({ route }: any) => {
-  const { plainNumber } = route?.params;
+const SignupStep4 = () => {
+  const params = useLocalSearchParams();
+  const { plainNumber } = params;
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState({
     fieldA: false,

@@ -19,6 +19,9 @@ interface PlacesInputProps {
 
 const PlacesInput = ({ onPlaceSelection }: PlacesInputProps) => {
   const inputRef = useRef<GooglePlacesAutocompleteRef>(null);
+
+  console.log("GOOGLE_PLACES_API_KEY", Config.GOOGLE_PLACES_API_KEY);
+
   return (
     <GooglePlacesAutocomplete
       ref={inputRef}

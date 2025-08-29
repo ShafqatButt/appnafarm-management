@@ -35,6 +35,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "39c43cef-50f8-426b-8fdc-19ec1f167162"
+      }
+    },
+    "owner": "shafqat1986"
   }
 }
